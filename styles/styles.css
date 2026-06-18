@@ -558,7 +558,8 @@ body {
 
 .contact__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 280px));
+  justify-content: center;
   gap: 1.5rem;
   margin-bottom: 3rem;
 }
@@ -591,14 +592,6 @@ body {
 
 .contact-card__icon--whatsapp {
   color: #25d366;
-}
-
-.contact-card__icon--email {
-  color: var(--gray);
-}
-
-.contact-card:hover .contact-card__icon--email {
-  color: var(--white);
 }
 
 .contact-card__title {

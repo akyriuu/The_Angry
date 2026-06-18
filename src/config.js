@@ -8,13 +8,11 @@ export const siteConfig = {
   links: {
     instagram: "https://instagram.com/theangry_oficial",
     whatsapp: "https://wa.me/5519997095963",
-    email: "mailto:contato@theangry.com.br",
   },
 
   contact: {
     instagram: "@theangry_oficial",
     whatsapp: "(19) 1999709-5963",
-    email: "contato@theangry.com.br",
     location: "Conchal/SP — Envio para todo o Brasil",
   },
 
