@@ -16,6 +16,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -24,6 +25,7 @@ body {
   color: var(--white);
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
 }
 
 .noise {
@@ -48,7 +50,6 @@ body {
   margin-bottom: 1rem;
 }
 
-/* HEADER */
 .site-header {
   position: fixed;
   top: 0;
@@ -115,13 +116,13 @@ body {
   color: var(--white);
 }
 
-/* HERO */
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
   padding: 8rem 0 4rem;
   position: relative;
+  overflow: hidden;
 }
 
 .hero__grid {
@@ -382,6 +383,7 @@ body {
 }
 
 .feature-card {
+  text-align: center;
   padding: 2rem;
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -393,6 +395,8 @@ body {
 }
 
 .feature-card__icon {
+  margin-left: auto;
+  margin-right: auto;
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
@@ -409,8 +413,6 @@ body {
   font-size: 0.9rem;
 }
 
-/* galeria aqui */
-
 .gallery__title {
   font-family: "Bebas Neue", sans-serif;
   font-size: clamp(2.5rem, 5vw, 3.5rem);
@@ -418,13 +420,15 @@ body {
 }
 
 .gallery__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
 }
 
 .gallery__item {
+  flex: 0 1 calc((100% - 2rem) / 3);
+  max-width: calc((100% - 2rem) / 3);
   aspect-ratio: 1;
   overflow: hidden;
   border-radius: 8px;
@@ -470,6 +474,7 @@ body {
 
   .hero__media {
     order: -1;
+    width: 100%;
     max-height: 360px;
   }
 
@@ -483,8 +488,18 @@ body {
     gap: 2rem;
   }
 
-  .gallery__grid {
-    grid-template-columns: 1fr 1fr;
+  .feature-card {
+    text-align: center;
+  }
+
+  .feature-card__icon {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .gallery__item {
+    flex-basis: calc((100% - 1rem) / 2);
+    max-width: calc((100% - 1rem) / 2);
   }
 
   .hero__image,
@@ -513,9 +528,6 @@ body {
   .gallery__item:nth-child(3) img {
     animation-delay: 0.3s;
   }
-  .gallery__item:nth-child(4) {
-    grid-column: 2/3;
-  }
 }
 
 @keyframes fadeIn {
@@ -529,7 +541,6 @@ body {
   }
 }
 
-/* CONTACT */
 .contact {
   text-align: center;
 }
@@ -623,4 +634,16 @@ body {
 
 .site-footer__text [data-config="brand.name"] {
   color: var(--orange);
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.about__title,
+.about__text,
+.gallery__title,
+.gallery .section-label,
+#sobre .section-label {
+  text-align: center;
 }
