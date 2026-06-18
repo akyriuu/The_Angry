@@ -1,0 +1,626 @@
+:root {
+  --black: #0a0a0a;
+  --white: #f5f5f5;
+  --orange: #ff5a1f;
+  --gray: #888;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 999;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--orange);
+  margin-bottom: 1rem;
+}
+
+/* HEADER */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.2rem 0;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.logo-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.logo-text {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+}
+
+.site-header__links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.site-header__links a {
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: color 0.2s;
+}
+
+.site-header__links a:hover {
+  color: var(--white);
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 0 4rem;
+  position: relative;
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 90, 31, 0.12) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.hero__content {
+  text-align: left;
+}
+
+.hero__media {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  aspect-ratio: 4 / 5;
+}
+
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition:
+    transform 0.6s ease,
+    opacity 0.6s ease;
+}
+
+.hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 10, 0.4) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+.feature-card__icon {
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--orange);
+  margin-bottom: 1.25rem;
+  transition: border-color 0.2s;
+}
+.feature-card:hover .feature-card__icon {
+  border-color: rgba(255, 90, 31, 0.4);
+}
+
+.feature-card__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+  margin-bottom: 2rem;
+}
+
+.hero__title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(4rem, 12vw, 9rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.hero__title span {
+  color: var(--orange);
+}
+
+.hero__text {
+  max-width: 480px;
+  margin: 0 0 2.5rem;
+  color: var(--gray);
+  font-size: 1.05rem;
+}
+
+.hero__content .colors,
+.hero__content .cta-group {
+  justify-content: flex-start;
+}
+
+.colors {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+}
+
+.dot--black {
+  background: #111;
+}
+
+.dot--white {
+  background: var(--white);
+}
+
+.dot--orange {
+  background: var(--orange);
+}
+
+.cta-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.8rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn--primary {
+  background: var(--orange);
+  color: var(--black);
+}
+
+.btn--primary:hover {
+  background: #ff7038;
+  transform: translateY(-2px);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--border);
+}
+
+.btn--outline:hover {
+  border-color: var(--white);
+  transform: translateY(-2px);
+}
+
+.section {
+  padding: 6rem 0;
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about__title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+
+.about__text {
+  color: var(--gray);
+  margin-bottom: 1rem;
+}
+
+.about__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.about__visual:hover .about__image {
+  transform: scale(1.04);
+}
+
+.about__visual {
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.about__visual::after {
+  content: none;
+}
+
+.hero__tag {
+  position: absolute;
+  bottom: 1.5rem;
+  text-transform: uppercase;
+  left: 1.5rem;
+  z-index: 1;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  color: var(--orange);
+}
+
+.features {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.feature-card {
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+.feature-card:hover {
+  border-color: rgba(255, 90, 31, 0.4);
+}
+
+.feature-card__icon {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card__title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card__text {
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+/* galeria aqui */
+
+.gallery__title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: 2.5rem;
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  justify-content: center;
+}
+
+.gallery__item {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  transition: border-color 0.3s ease;
+}
+
+.gallery__item:hover {
+  border-color: var(--orange);
+}
+
+.gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
+}
+
+.gallery__item:hover img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__content {
+    text-align: center;
+  }
+
+  .hero__content .colors,
+  .hero__content .cta-group {
+    justify-content: center;
+  }
+
+  .hero__text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__media {
+    order: -1;
+    max-height: 360px;
+  }
+
+  .about__grid,
+  .features__grid,
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about__grid {
+    gap: 2rem;
+  }
+
+  .gallery__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero__image,
+  .about__image,
+  .gallery__item img {
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+  }
+
+  .hero__image {
+    animation-delay: 0.1s;
+  }
+
+  .about__image {
+    animation-delay: 0.2s;
+  }
+
+  .gallery__item:nth-child(1) img {
+    animation-delay: 0.1s;
+  }
+
+  .gallery__item:nth-child(2) img {
+    animation-delay: 0.2s;
+  }
+
+  .gallery__item:nth-child(3) img {
+    animation-delay: 0.3s;
+  }
+  .gallery__item:nth-child(4) {
+    grid-column: 2/3;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* CONTACT */
+.contact {
+  text-align: center;
+}
+
+.contact__title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1rem;
+}
+
+.contact__text {
+  color: var(--gray);
+  margin-bottom: 3rem;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.contact-card {
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--white);
+  transition: all 0.2s;
+}
+
+.contact-card:hover {
+  border-color: var(--orange);
+  transform: translateY(-4px);
+}
+
+.contact-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.contact-card__icon svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.contact-card__icon--whatsapp {
+  color: #25d366;
+}
+
+.contact-card__icon--email {
+  color: var(--gray);
+}
+
+.contact-card:hover .contact-card__icon--email {
+  color: var(--white);
+}
+
+.contact-card__title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.3rem;
+}
+
+.contact-card__text {
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.contact__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.site-footer {
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.site-footer__text {
+  color: var(--gray);
+  font-size: 0.8rem;
+}
+
+.site-footer__text [data-config="brand.name"] {
+  color: var(--orange);
+}
